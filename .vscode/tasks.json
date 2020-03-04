@@ -5,26 +5,6 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "clang-6.0 build active file",
-            "command": "/usr/bin/clang-6.0",
-            "args": [
-                "-g",
-                "${file}",
-                "-include",
-                "${workspaceRoot}/.vscode/head.h",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "options": {
-                "cwd": "/usr/bin"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": "build"
-        },
-        {
-            "type": "shell",
             "label": "Copyright",
             "command": "g++",
             "args": [

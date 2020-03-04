@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.asp": "asp",
+        "*.vbs": "asp",
+        "*.inc": "asp",
+        "ostream": "cpp"
+    }
+}

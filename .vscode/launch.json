@@ -5,15 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Linux",
+            "name": "Cpp Debug Launch",
+            "windows": {
+                "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe"
+            },
+            "linux": {
+                "program": "${fileDirname}/${fileBasenameNoExtension}",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
+            "internalConsoleOptions": "neverOpen",
             "MIMode": "gdb",
             "setupCommands": [
                 {
@@ -23,29 +31,6 @@
                 }
             ],
             "preLaunchTask": "Copyright",
-        },
-        {
-            "name": "Windows",
-            "type": "cppdbg",
-            "request": "launch",
-            "preLaunchTask": "Copyright",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "showDisplayString": true,
-            "environment": [],
-            "externalConsole": false,
-            "internalConsoleOptions": "neverOpen",
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
         }
     ]
 }
