@@ -7,6 +7,16 @@
             "type": "shell",
             "label": "Copyright",
             "command": "g++",
+            "linux": {
+                "args": [
+                    "-g",
+                    "${file}",
+                    "-include",
+                    "${workspaceRoot}/.vscode/head.h",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}"
+                ],
+            },
             "args": [
                 "-g",
                 "${file}",

@@ -3,6 +3,10 @@
         "*.asp": "asp",
         "*.vbs": "asp",
         "*.inc": "asp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "fstream": "cpp",
+        "*.tcc": "cpp"
     }
 }

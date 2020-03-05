@@ -5,15 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Cpp Debug Launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "windows": {
                 "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
                 "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe"
             },
             "linux": {
-                "program": "${fileDirname}/${fileBasenameNoExtension}",
                 "miDebuggerPath": "/usr/bin/gdb"
             },
+            "name": "Cpp Debug Launch",
             "type": "cppdbg",
             "request": "launch",
             "args": [],
