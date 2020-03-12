@@ -27,4 +27,3 @@ int main()
     CPointer p(10), q(20);
     q.Copy(p);
     printf("%p %p\n", &p, &q);
-}
