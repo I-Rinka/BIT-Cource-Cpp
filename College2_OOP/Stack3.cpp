@@ -18,6 +18,7 @@ void *Stack::peek()
     if (head == 0)
     {
         printf("Stack empty\n");
+        return NULL;
     }
     return head->data;
 }
@@ -44,8 +45,6 @@ int main()
     int a = 1, b = 2;
     stk.push(&a);
     stk.push(&b);
-    for (int i = 0; i < 2; i++)
-    {
-        printf("%d ", (int)stk.pop());
-    }
+    stk.~Stack();
+    stk.peek();
 }
