@@ -28,15 +28,15 @@ CArray::~CArray()
 void CArray::Copy(const char *t)
 {
     int i = 0;
-    for (int i = 0; i < size; i++)
+    for (; i < size; i++)
     {
         if (t[i] == 0)
         {
             break;
         }
         this->str[i] = t[i];
-        
     }
+    str[i] = 0;
     this->length = i;
 }
 int main()
