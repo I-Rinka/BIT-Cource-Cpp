@@ -1,0 +1,29 @@
+//先解决问题再存数据的技术//备忘录？
+void init()
+{
+    memset(dp);
+    //斜线式给mount赋值
+    for()
+    {
+        for()
+        {
+
+        }
+    }
+    //给dis赋值，并且取最小的那种
+}
+int dpSlove(int l,int r)
+{
+    if(dp[l][r]!=INF) return dp[l][r];
+    if(l<0||r<0||l>lim||r>lim) return 0;
+    if(l=r) return dp[l][r]=0;
+    if(l>r)
+    {
+        dp[l][r]=min(dpSlove(l-1,r)+mount[l-1][r]*dis[l][l-1],dpSlove(r,l-1)+mount[l-1][r]*dis[l][r]);
+    }
+    else
+    {
+        dp[l][r]=min(dpSlove(l+1,r)+mount[l+1][r]*dis[l][l+1],dpSlove(r,l+1)+mount[l+1][r]*dis[l][r]);
+    }
+    return dp[l][r];
+}
