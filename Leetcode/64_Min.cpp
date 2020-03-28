@@ -51,5 +51,5 @@ int main()
     in[2].push_back(2);
     in[2].push_back(1);
     Solution an;
-    cout << an.minPathSum(in);
+    cout << an.minPathSum(in)<<endl;
 }

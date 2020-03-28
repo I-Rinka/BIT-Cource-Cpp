@@ -105,6 +105,6 @@ int ans()
 int main()
 {
     input();
-    int ans1 = ans();
-    cout << ans1 << endl;
+    cout << ans() << endl;
 }
+// int ans1 = ans();
