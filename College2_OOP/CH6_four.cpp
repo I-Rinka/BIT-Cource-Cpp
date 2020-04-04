@@ -4,108 +4,108 @@ class Traveler
 {
 private:
     char *Str;
-    int number = 0;
+    int number;
 
 public:
-    char *Name()
+    Traveler(const char *temp)
     {
-        return Str;
-    }
-    Traveler(const char *str)
-    {
-        while (1)
+        number = 0;
+        for (int i = 0; i < 10000; i++)
         {
-            number++;
-            if (str[number] == 0)
+            if (temp[i] == 0)
             {
+                number = i + 1;
                 break;
             }
         }
-        this->Str = (char *)malloc(sizeof(char) * number);
-        for (int i = 0; i <= number; i++)
+        Str = (char *)malloc(sizeof(char) * number);
+        for (int i = 0; i < number; i++)
         {
-            this->Str[i] = str[i];
+            Str[i] = temp[i];
         }
     }
-    Traveler(const Traveler &t)
+    Traveler(const Traveler &Other)
     {
-        Traveler(t.Str);
+        new (this) Traveler(Other.Str);
     }
     ~Traveler()
     {
-        // free(this->Str);
+        free(Str);
     }
-    void operator=(Traveler &other)
+    friend ostream &operator<<(ostream &out, Traveler &temp)
     {
-        other.Str = (char *)malloc(sizeof(char) * this->number);
-        for (int i = 0; i <= number; i++)
+        for (int i = 0; i < temp.number; i++)
         {
-            other.Str[i] = this->Str[i];
+            out << temp.Str[i];
         }
+        return out;
     }
 };
 class Pager
 {
 private:
     char *Str;
-    int number = 0;
+    int number;
 
 public:
-    Pager(const char *str)
+    Pager(const char *temp)
     {
-        int number = 0;
-        while (1)
+        number = 0;
+        for (int i = 0; i < 10000; i++)
         {
-            number++;
-            if (str[number] == 0)
+            if (temp[i] == 0)
             {
+                number = i + 1;
                 break;
             }
         }
-        this->Str = (char *)malloc(sizeof(char) * number);
-        for (int i = 0; i <= number; i++)
+        Str = (char *)malloc(sizeof(char) * number);
+        for (int i = 0; i < number; i++)
         {
-            this->Str[i] = str[i];
+            Str[i] = temp[i];
         }
+    }
+    Pager(const Pager &Other)
+    {
+        new (this) Pager(Other.Str);
     }
     ~Pager()
     {
-        // free(this->Str);
-    }
-    void operator=(Pager &other)
-    {
-        other.Str = (char *)malloc(sizeof(char) * this->number);
-        for (int i = 0; i <= number; i++)
-        {
-            other.Str[i] = this->Str[i];
-        }
+        free(Str);
     }
     friend ostream &operator<<(ostream &out, Pager &temp)
     {
-        out
-            << temp.Str;
+        for (int i = 0; i < temp.number; i++)
+        {
+            out << temp.Str[i];
+        }
         return out;
     }
 };
 class BusinessTraveler : public Traveler
 {
+private:
+    Pager pg;
+
 public:
-    Pager A;
-    BusinessTraveler() : Traveler("NULL"), A("NULL")
+    BusinessTraveler(char *TravelerName, char *PagerName) : Traveler(TravelerName), pg(PagerName)
     {
     }
-    BusinessTraveler(const char *TravelerName, const char *PageName) : Traveler(TravelerName), A(PageName)
+    BusinessTraveler() : Traveler("NULL"), pg("NULL")
     {
     }
-    BusinessTraveler(BusinessTraveler &t) : Traveler(t.Name()), A(t.A)
+    BusinessTraveler(const BusinessTraveler &Other) : Traveler(Other), pg(Other.pg)
     {
     }
-    friend ostream &operator<<(ostream &out, BusinessTraveler &temp)
+    friend ostream &operator<<(ostream &os, BusinessTraveler &temp)
     {
-        out << temp.Name() << '\n'
-            << temp.A
-            << endl;
-        return out;
+        os << (Traveler &)temp << '\n'
+           << temp.pg;
+        return os;
+    }
+    void operator=(BusinessTraveler &Other)
+    {
+        new (this) BusinessTraveler(Other);
     }
 };
 int main()
