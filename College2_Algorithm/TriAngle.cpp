@@ -1,57 +1,61 @@
 #include <iostream>
-using namespace std;
-//最后的总数
-int ans = 0, limt = 0, num;
-//第一层
-int x[25], map[25][25];
-int countNumber(int c, int base)
+int base[25], mp[25][25];
+int num, ans = 0, limit;
+void traceBack(int t, int count)
 {
-    for (int i = 0; i < base - 1; i++)
+    if (t >= num)
     {
-        for (int j = 0; j < base - 1 - i; j++)
-        {
-            if (i == 0)
-            {
-                map[i][j] = x[j] ^ x[j + 1];
-            }
-            else
-            {
-                map[i][j] = map[i - 1][j] ^ map[i - 1][j + 1];
-            }
-            if (map[i][j] == 1)
-            {
-                c++;
-            }
-        }
-    }
-    return c;
-}
-void traceBack(int n, int count)
-{
-    if (n == num)
-    {
-        if (countNumber(count, n) == limt)
-        {
-            ans++;
-        }
+        ans++;
         return;
     }
-    x[n] = 1;
-    if ((count + 1) < limt || ((count + 1 == limt) && num == 3))
+    base[t] = 1;
+    int temp = count;
+    count++;
+    for (int i = 0; i < t; i++)
     {
-        if (countNumber(count, n) < limt)
+        if (i == 0)
         {
-            traceBack(n + 1, count + 1);
+            mp[i][t - i - 1] = base[t - i - 1] ^ base[t - i];
+        }
+        else
+        {
+            mp[i][t - i - 1] = mp[i - 1][t - i - 1] ^ mp[i - 1][t - i];
+        }
+        if (mp[i][t - i - 1])
+        {
+            count++;
         }
     }
-    x[n] = 0;
-    traceBack(n + 1, count);
+    if (count <= limit && ((t + 2) * (t + 1) / 2 - count <= limit))
+    {
+        traceBack(t + 1, count);
+    }
+    base[t] = 0;
+    for (int i = 0; i < t; i++)
+    {
+        if (i == 0)
+        {
+            mp[i][t - i - 1] = base[t - i - 1] ^ base[t - i];
+        }
+        else
+        {
+            mp[i][t - i - 1] = mp[i - 1][t - i - 1] ^ mp[i - 1][t - i];
+        }
+        if (mp[i][t - i - 1])
+        {
+            temp++;
+        }
+    }
+    if (temp <= limit && ((t + 2) * (t + 1) / 2 - temp <= limit))
+    {
+        traceBack(t + 1, temp);
+    }
 }
-int GetAnswer()
+int GetAns()
 {
     scanf("%d", &num);
-    limt = num * (num + 1) / 4;
-    if (num * (num + 1) % 2 == 1)
+    limit = num * (num + 1) / 4;
+    if (num * (num + 1) / 2 % 2 == 1)
     {
         return 0;
     }
@@ -60,5 +64,5 @@ int GetAnswer()
 }
 int main()
 {
-    cout << GetAnswer() << endl;
+    std::cout << GetAns() << std::endl;
 }
