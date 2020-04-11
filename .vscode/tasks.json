@@ -14,7 +14,7 @@
                     "-include",
                     "${workspaceRoot}/.vscode/head.h",
                     "-o",
-                    "${fileDirname}/${fileBasenameNoExtension}"
+                    "${fileDirname}/${fileBasenameNoExtension}.out"
                 ],
             },
             "args": [
