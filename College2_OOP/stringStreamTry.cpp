@@ -18,4 +18,14 @@ int main()
         t >> in;
         cout << in << endl; //自动进行字符串到整形的转换，无敌！
     }
+    t << "2.333";
+    double dou;//居然对浮点数不管用？？
+    t >> dou;
+    t << 2.44;
+    cout << dou << endl;
+    string ff;
+    t >> ff;
+    cout << ff << endl;
+    ff = to_string(1234);
+    cout << ff << endl;
 }
