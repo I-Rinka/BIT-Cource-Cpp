@@ -2,39 +2,35 @@
 #include <sstream> // "String streams"
 #include <cstring>
 using namespace std;
-
-/*
-class Araray
-{
-    enum
-    {
-        sz = 5
-    };
-    int i[sz];
-
-public:
-    Arsray() { memset(i, 0, sz * sizeof(*i)); }
-    int &operator[](int x)
-    {
-        require(x >= 0 && x < sz,
-                "Array::operator[] out of range");
-        return i[x];
-    }
-};*/
-template <typename A, int B>
+template <typename A, int limit>
 class Array
 {
 public:
-    friend ostream &operator<<(ostream &os, const Array<A, B> &ia)
+    int interger[limit];
+    int &operator[](int i)
     {
-        // for (int j = 0; j < ia.sz; j++)
-        //     is >> ia.i[j];
+        if (i > limit)
+        {
+            cout << "out of length" << endl;
+            return interger[0];
+        }
+        else
+            return interger[i];
+    }
+    friend ostream &operator<<(ostream &os, const Array<A, limit> &ia)
+    {
+        for (int i = 0; i < limit; i++)
+        {
+            os << ia.interger[i] << endl;
+        }
         return os;
     };
-    friend istream &operator>>(istream &is, Array<A, B> &ia)
+    friend istream &operator>>(istream &is, Array<A, limit> &ia)
     {
-        // for (int j = 0; j < ia.sz; j++)
-        //     is >> ia.i[j];
+        for (int i = 0; i < limit; i++)
+        {
+            is >> ia.interger[i];
+        }
         return is;
     };
 };
@@ -42,11 +38,8 @@ public:
 int main()
 {
     stringstream input("47 34 56 92 103");
-    // Array<int, 5> a;
-    // input >> a;
-    string temp;
-    input >> temp;
-    cout << temp;
-    // a[4] = -1; // Use overloaded operator[]
-    // cout << a;
+    Array<int, 5> a;
+    input >> a;
+    a[4] = -1; // Use overloaded operator[]
+    cout << a;
 }
