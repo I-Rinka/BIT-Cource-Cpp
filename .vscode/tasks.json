@@ -20,8 +20,8 @@
             "args": [
                 "-g",
                 "${file}",
-                "-include",
-                "${workspaceRoot}/.vscode/head.h",
+                // "-include",
+                //"${workspaceRoot}/.vscode/head.h",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.exe"
             ],
