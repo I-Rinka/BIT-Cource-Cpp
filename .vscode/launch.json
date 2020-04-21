@@ -8,7 +8,7 @@
             "program": "${fileDirname}/${fileBasenameNoExtension}.out",
             "windows": {
                 "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-                "miDebuggerPath": "C:\\ProgramData\\Mingw64\\bin\\gdb.exe"
+                "miDebuggerPath": "C:\\ProgramData\\chocolatey\\lib\\mingw\\tools\\install\\mingw64\\bin\\gdb.exe"
             },
             "linux": {
                 "miDebuggerPath": "/usr/bin/gdb"

@@ -15,16 +15,31 @@
                     "${workspaceRoot}/.vscode/head.h",
                     "-o",
                     "${fileDirname}/${fileBasenameNoExtension}.out"
-                ],
+                ]
             },
             "args": [
                 "-g",
                 "${file}",
-                // "-include",
-                //"${workspaceRoot}/.vscode/head.h",
+                "-include",
+                "${workspaceRoot}/.vscode/head.h",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.exe"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: g++ build active file",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
         }
     ]
 }

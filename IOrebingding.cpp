@@ -1,8 +1,9 @@
 #include <iostream>
-// using namespace std;
+#include <string>
+using namespace std;
 int main()
 {
-    std::string f;
-    std::cin >> f;
-    std::cout << f << std::endl;
+    int a;
+    cin >> a;
+    std::cout <<  a+1 << std::endl;
 }
