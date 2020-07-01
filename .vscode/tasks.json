@@ -17,14 +17,16 @@
                     "${fileDirname}/${fileBasenameNoExtension}.out"
                 ]
             },
-            "args": [
-                "-g",
-                "${file}",
-                "-include",
-                "${workspaceRoot}/.vscode/head.h",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe"
-            ]
+            "windows": {
+                "args": [
+                    "-g",
+                    "${file}",
+                    "-include",
+                    "${workspaceRoot}/.vscode/head.h",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}.exe"
+                ]
+            },
         },
         {
             "type": "shell",
@@ -36,6 +38,14 @@
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
+            "linux": {
+                "args": [
+                    "-g",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}.out"
+                ]
+            },
             "problemMatcher": [
                 "$gcc"
             ],
