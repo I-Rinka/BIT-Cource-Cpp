@@ -26,7 +26,7 @@ public:
     {
         delete[] this->d; //解除动态内存的占用
     }
-    friend ostream &operator<<(ostream &o, MyArray &MA)//流输出重载
+    friend ostream &operator<<(ostream &o, MyArray &MA) //流输出重载
     {
         for (int i = 0; i < MA.number; i++)
         {
