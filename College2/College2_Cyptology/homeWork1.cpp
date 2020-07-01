@@ -12,7 +12,7 @@ void preProcess(vector<vector<char>> &t)
         }
     }
 }
-void decode(vector<vector<char>> &t, int k)
+void decode(vector<vector<char>> &t, int k) //输入k和对应的密码容器，得到对应的解密结果
 {
     for (int i = 0; i < t.size(); i++)
     {
@@ -37,7 +37,7 @@ void output(vector<vector<char>> &t)
 int main()
 {
     vector<vector<char>> store;
-    while (true)
+    while (true) //输入密文
     {
         vector<char> t;
         char c;
@@ -56,12 +56,12 @@ int main()
         }
     }
     int k = 0;
-    preProcess(store);
+    preProcess(store); //初始化
     for (; k < 26; k++)
     {
         decode(store, k);
         output(store);
-        cout << "Is it the right answer ?" << '\n'
+        cout << "Is it the right answer ?" << '\n' //如果得到了正确的答案，需要手动停止程序
              << "y/n" << endl;
         char judge;
         cin.get(judge);
@@ -69,7 +69,7 @@ int main()
         if (judge == 'y' || judge == 'Y')
         {
             cout << "key is " << 26 - k << endl;
-            break;
+            break; //如果是明文的话，程序停止，并输出对应的密钥
         }
         decode(store, -k);
     }
