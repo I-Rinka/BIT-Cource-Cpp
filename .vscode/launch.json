@@ -21,7 +21,7 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            // "internalConsoleOptions": "neverOpen",
+            "internalConsoleOptions": "neverOpen",
             "MIMode": "gdb",
             "setupCommands": [
                 {
