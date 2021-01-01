@@ -5,17 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "windows": {
-                "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-                "miDebuggerPath": "C:\\ProgramData\\chocolatey\\lib\\mingw\\tools\\install\\mingw64\\bin\\gdb.exe"
-            },
-            "linux": {
-                "program": "${fileDirname}/${fileBasenameNoExtension}.out",
-                "miDebuggerPath": "/usr/bin/gdb"
-            },
-            "name": "Cpp Debug Launch",
+            "name": "make",
             "type": "cppdbg",
             "request": "launch",
+            "program": "${workspaceFolder}/main.out",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -25,12 +18,58 @@
             "MIMode": "gdb",
             "setupCommands": [
                 {
-                    // "description": "为 gdb 启用整齐打印",
+                    "description": "为 gdb 启用整齐打印",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
             ],
-            // "preLaunchTask": "Copyright",
+            "preLaunchTask": "make"
+        },
+        {
+            "console": "externalTerminal", //MSVC一般是GBK，使用外置中段不会乱码
+            "name": "MSVC Debug",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "preLaunchTask": "cl.exe build active file",
+            "postDebugTask": "clear"
+        },
+        {
+            "console": "externalTerminal", //MSVC一般是GBK，使用外置中段不会乱码
+            "name": "MSVC Default Env",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "preLaunchTask": "cl.exe with default env",
+            "postDebugTask": "clear"
+        },
+        {
+            "name": "Cpp Debug Launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "internalConsoleOptions": "neverOpen",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
             "preLaunchTask": "C/C++: g++ build active file",
         }
     ]
