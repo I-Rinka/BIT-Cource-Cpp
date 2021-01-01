@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int pic_m = 0;
-int pic_n = 0;
-
-int kernel_u = 0;
-int kernel_v = 0;
-
 int GetPicNum(int *pic_addr, int row_limit, int col_limit, int row, int col)
 {
     if (row < 0 || col < 0 || row >= row_limit || col >= col_limit)
@@ -18,6 +12,12 @@ int GetPicNum(int *pic_addr, int row_limit, int col_limit, int row, int col)
 
 int main(int argc, char const *argv[])
 {
+
+    int pic_m = 0;
+    int pic_n = 0;
+
+    int kernel_u = 0;
+    int kernel_v = 0;
     scanf("%d %d", &pic_m, &pic_n);
     scanf("%d %d", &kernel_u, &kernel_v);
 
@@ -69,23 +69,26 @@ int main(int argc, char const *argv[])
     {
         for (int j = 0; j < pic_n; j++)
         {
-            int ans = 0;
+            double ans = 0;
             for (int i2 = -middle_u; i2 <= middle_u; i2++)
             {
                 for (int j2 = -middle_v; j2 <= middle_v; j2++)
                 {
-                    double temp = kernel_addr[(i2 + middle_u) * kernel_v + (j2 + middle_v)] * GetPicNum(pic_addr, pic_m, pic_n, i + i2, j + j2);
-                    if (temp >= 0)
-                    {
-                        ans += (int)(temp + 0.5);
-                    }
-                    else
-                    {
-                        ans += (int)(temp - 0.5);
-                    }
+                    int num = GetPicNum(pic_addr, pic_m, pic_n, i + i2, j + j2);
+                    double k_num =
+                        kernel_addr[(i2 + middle_u) * kernel_v + (j2 + middle_v)];
+                    double temp = k_num * num;
+                    ans += temp;
                 }
             }
-            printf("%d ", ans);
+            if (ans >= 0)
+            {
+                printf("%d ", (int)(ans + 0.5));
+            }
+            else
+            {
+                printf("%d ", (int)(ans - 0.5));
+            }
         }
         printf("\n");
     }
